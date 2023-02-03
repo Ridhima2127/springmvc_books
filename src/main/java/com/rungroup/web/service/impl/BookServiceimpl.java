@@ -34,15 +34,10 @@ public class BookServiceimpl implements BookService {
     }
 
     @Override
-    public void saveBook(Book book) {
+    public Book saveBook(Book book) {
         return bookRepository.save(book);
 
     }
-
-//    @Override
-//    public Book saveBook(Book book) {
-//        return bookRepository.save(book);
-//    }
 
     private BookDto mapToBookDto(book books){
         BookDto bookDto = BookDto.builder()

@@ -10,6 +10,5 @@ public interface BookRepository extends JpaRepository<book, Long> {
 Optional<book> findByTitle(String url);
 
 
-
     Book saveBook(Book book);
 }

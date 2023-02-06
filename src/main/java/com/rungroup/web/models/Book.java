@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name = "books")
-public class book {
+public class Book {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
@@ -26,5 +28,7 @@ public class book {
     @UpdateTimestamp
     private LocalDateTime updatedOn;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
+    private Set<Story> stories = new HashSet<>();
 
 }

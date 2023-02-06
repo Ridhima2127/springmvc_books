@@ -1,11 +1,24 @@
 package com.rungroup.web.service;
 
 import com.rungroup.web.dto.BookDto;
+import com.rungroup.web.models.Book;
 
-import java.awt.print.Book;
 import java.util.List;
 
 public interface BookService {
     List<BookDto> findAllBooks();
-    Book saveBook(Book book);
+
+
+    Book saveBook(BookDto bookDto);
+
+    BookDto findBookById(long bookId);
+
+    BookDto findBookById();
+
+
+    void updateBook(BookDto book);
+
+    void delete(Long bookId);
+
+    List<BookDto> searchBooks(String query);
 }

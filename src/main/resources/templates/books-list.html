@@ -46,10 +46,17 @@
                 <p class="lead fw-normal text-muted mb-0">Books</p>
             </div>
             <div class="row gx-5">
-                <div th:each="books : ${books}" class="col-lg-6">
-                    <div class="position-relative mb-5">
+                <div>
+                    <form th:action="@{/books/search}" class="form-inline my-2 my-lg-0 mb-3"></form>
+                    <input name="query" class="form-control me-sm-e mb-5" type="search" placeholder="Search Book" aria-label="Search">
+                </div>
+                <div th:each="books : ${books}" class="col-lg-6 mb-2">
+                    <div class="position-relative mb-3">
                         <a th:text="${books.title} "class="h3 fw-bolder text-decoration-none link-da rk stretched-link" href="#!">Bookstore</a>
                     </div>
+                    <a class="btn btn-primary" th:href="@{/books/{bookId}/edit(bookId=${book.id})}">View</a>
+                    <a class="btn btn-primary" th:href="@{/books/{bookId}/edit(bookId=${book.id})}">Edit</a>
+
                 </div>
             </div>
         </div>

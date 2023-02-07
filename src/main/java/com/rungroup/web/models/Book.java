@@ -7,7 +7,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -29,6 +31,6 @@ public class Book {
     private LocalDateTime updatedOn;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
-    private Set<Story> stories = new HashSet<>();
+    private List<Story> stories = new ArrayList<>();
 
 }

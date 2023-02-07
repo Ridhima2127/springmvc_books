@@ -16,4 +16,16 @@ public class StoryMapper {
                 .build();
 
     }
+    public static StoryDto mapToStoryDto(Story story){
+        return StoryDto.builder()
+                .id(story.getId())
+                .name(story.getName())
+                .startTime(story.getStartTime())
+                .endTime(story.getEndTime())
+                .type(story.getType())
+                .createdOn(story.getCreatedOn())
+                .updatedOn(story.getUpdatedOn())
+                .build();
+
+    }
 }

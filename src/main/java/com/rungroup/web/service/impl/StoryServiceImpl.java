@@ -9,8 +9,13 @@ import com.rungroup.web.service.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.rungroup.web.mapper.StoryMapper.mapToStory;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import static com.rungroup.web.mapper.StoryMapper.mapToStory;
+import static com.rungroup.web.mapper.StoryMapper.mapToStoryDto;
+
+@Service
 public class StoryServiceImpl implements StoryService {
 
     private StoryRepository storyRepository;
@@ -30,7 +35,16 @@ public class StoryServiceImpl implements StoryService {
         storyRepository.save(story);
     }
 
+    @Override
+    public List<StoryDto> findAllStories() {
+        List<Story> stories = storyRepository.findAll();
+        return stories.stream().map(story -> mapToStoryDto(story)).collect(Collectors.toList());
+    }
 
-
+    @Override
+    public StoryDto findByStoryId(Long storyId) {
+        Story story = storyRepository.findById(storyId).get();
+        return mapToStoryDto(story);
+    }
 
 }

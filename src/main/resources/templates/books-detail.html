@@ -58,25 +58,26 @@
         <div class="col-lg-8">
           <!-- Featured blog post-->
           <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+            <a href="#!"><img class="card-img-top" src="https://pub-static.fotor.com/assets/projects/pages/dddda0b59fb9433eb53e7174981c8b67/blue-minimal-novel-cover-6e355184dc3545c6bec6a9f618f83e0d.jpg" alt="..." /></a>
             <div class="card-body">
               <div class="small text-muted" th:text="${books.createdOn}"></div>
               <h2 class="card-title">About the book</h2>
               <p class="card-text" th:text="${books.description}" ></p>
               <a class="btn btn-primary" th:href="@{/books/{bookId}/delete(bookId=${books.id})}">Delete</a>
+              <a class="btn btn-primary" th:href="@{/stories/{bookId}/new(bookId=${books.id})}">Create Story</a>
             </div>
           </div>
           <!-- Nested row for non-featured blog posts-->
           <div class="row">
             <div class="col-lg-6">
               <!-- Blog post-->
-              <div class="card mb-4">
+              <div th:each="story : ${book.stories}" class="card mb-4">
                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                 <div class="card-body">
                   <div class="small text-muted">January 1, 2022</div>
                   <h2 class="card-title h4">Story Title</h2>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                  <a class="btn btn-primary" href="#!">Read more →</a>
+                  <a class="btn btn-primary" th:href="@{/stories/{storyId}(storyId=${story.id})}">Read more →</a>
                 </div>
               </div>
               <!-- Blog post-->
@@ -92,11 +93,11 @@
             </div>
             <div class="col-lg-6">
               <!-- Blog post-->
-              <div class="card mb-4">
+              <div th:each="story :${book.stories}"class="card mb-4">
                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                 <div class="card-body">
                   <div class="small text-muted">January 1, 2022</div>
-                  <h2 class="card-title h4">Story Title</h2>
+                  <h2 th:text="${story.name}" class="card-title h4">Story Title</h2>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
                   <a class="btn btn-primary" href="#!">Read more →</a>
                 </div>

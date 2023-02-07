@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.rungroup.web.mapper.BookMapper.mapToBook;
+import static com.rungroup.web.mapper.BookMapper.mapToBookDto;
+
 @Service
 @Builder
 public class BookServiceImpl implements BookService {
@@ -65,21 +68,5 @@ public class BookServiceImpl implements BookService {
         return books.stream().map(book -> mapToBookDto(book)).collect(Collectors.toList());
     }
 
-    private Book mapToBook(BookDto book) {
-         Book bookDto = Book.builder().id(book.getId()).title(book.getTitle()).build();
-         return bookDto;
-    }
 
-    private BookDto mapToBookDto(Book books){
-        BookDto bookDto = BookDto.builder()
-                .id(books.getId())
-                .title(books.getTitle())
-                .category(books.getCategory())
-                .description(books.getDescription())
-                .createdOn(books.getCreatedOn())
-                .updatedOn(books.getUpdatedOn())
-
-                .build();
-        return bookDto;
-    }
 }

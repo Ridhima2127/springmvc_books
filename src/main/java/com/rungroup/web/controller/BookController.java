@@ -2,7 +2,10 @@ package com.rungroup.web.controller;
 
 
 import com.rungroup.web.dto.BookDto;
+import com.rungroup.web.models.UserEntity;
+import com.rungroup.web.security.SecurityUtil;
 import com.rungroup.web.service.BookService;
+import com.rungroup.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,15 +21,23 @@ import java.util.List;
 public class BookController {
     private  BookService bookService;
 
-
+    private UserService userService;
     @Autowired
-    public BookController(BookService bookService){
-          this.bookService = bookService;
+    public BookController(BookService bookService, UserService userService){
+        this.userService = userService;
+        this.bookService = bookService;
     }
 
     @GetMapping("/books")
     public String listBooks(Model model){
+        UserEntity user = new UserEntity();
        List<BookDto> books = bookService.findAllBooks();
+       String username = SecurityUtil.getSessionUser();
+       if(username != null){
+           user = userService.findByUsername(username);
+           model.addAttribute("user",user);
+       }
+        model.addAttribute("user",user);
        model.addAttribute( "books", books);
        return "books-list";
 
@@ -34,8 +45,15 @@ public class BookController {
 
     @GetMapping("/books/{bookId}")
     public String bookDetail(@PathVariable("bookId") long bookId, Model model){
+        UserEntity user = new UserEntity();
         BookDto bookDto = bookService.findBookById(bookId);
         model.addAttribute("book", bookDto);
+        String username = SecurityUtil.getSessionUser();
+        if(username != null){
+            user = userService.findByUsername(username);
+            model.addAttribute("user",user);
+        }
+        model.addAttribute("user",user);
         return "books-detail";
     }
 

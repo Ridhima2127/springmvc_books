@@ -1,4 +1,5 @@
 package com.rungroup.web.dto;
+import com.rungroup.web.models.UserEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class BookDto {
     @NotEmpty(message = "Book category should not be empty")
     private String category;
 
+    private UserEntity createdBy;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
 

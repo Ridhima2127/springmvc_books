@@ -63,8 +63,9 @@
             <div class="small text-muted" th:text="${story.createdOn}"></div>
             <h2 class="card-title">About the story</h2>
             <p class="card-text" th:text="${story.description}" ></p>
+            <div th:if="${user.id} == ${book.createdBy.id}">
             <a class="btn btn-primary" th:href="@{/stories/{storyId}/delete(storyId=${story.id})}">Delete</a>
-
+            </div>
           </div>
         </div>
 

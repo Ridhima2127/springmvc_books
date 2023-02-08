@@ -30,6 +30,9 @@ public class Book {
     @UpdateTimestamp
     private LocalDateTime updatedOn;
 
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private UserEntity createdBy;
     @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
     private List<Story> stories = new ArrayList<>();
 

@@ -4,8 +4,11 @@ import com.rungroup.web.dto.BookDto;
 import com.rungroup.web.dto.StoryDto;
 import com.rungroup.web.models.Book;
 import com.rungroup.web.models.Story;
+import com.rungroup.web.models.UserEntity;
 import com.rungroup.web.repository.BookRepository;
 import com.rungroup.web.repository.StoryRepository;
+import com.rungroup.web.repository.UserRepository;
+import com.rungroup.web.security.SecurityUtil;
 import com.rungroup.web.service.BookService;
 import com.rungroup.web.service.StoryService;
 import lombok.Builder;
@@ -25,10 +28,14 @@ import static com.rungroup.web.mapper.StoryMapper.mapToStoryDto;
 @Builder
 public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
+    private UserRepository userRepository;
+
 
     @Autowired
-    public BookServiceImpl(BookRepository bookRepository) {
+    public BookServiceImpl(BookRepository bookRepository,
+                           UserRepository userRepository) {
         this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -40,7 +47,10 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book saveBook(BookDto bookDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user= userRepository.findByUsername(username);
         Book book = mapToBook(bookDto);
+        book.setCreatedBy(user);
         return bookRepository.save(book);
     }
 
@@ -58,7 +68,10 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void updateBook(BookDto bookDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user= userRepository.findByUsername(username);
         Book book = mapToBook(bookDto);
+        book.setCreatedBy(user);
         bookRepository.save(book);
     }
 

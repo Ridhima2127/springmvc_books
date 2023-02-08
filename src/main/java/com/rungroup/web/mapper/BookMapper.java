@@ -10,7 +10,13 @@ import static com.rungroup.web.mapper.StoryMapper.mapToStoryDto;
 
 public class BookMapper {
     public static Book mapToBook(BookDto book) {
-        Book bookDto = Book.builder().id(book.getId()).title(book.getTitle()).build();
+        Book bookDto = Book.builder()
+                .id(book.getId())
+                .title(book.getTitle())
+                .createdBy(book.getCreatedBy())
+                .createdOn(book.getCreatedOn())
+                .updatedOn(book.getUpdatedOn())
+                .build();
         return bookDto;
     }
 
@@ -20,6 +26,7 @@ public class BookMapper {
                 .title(books.getTitle())
                 .category(books.getCategory())
                 .description(books.getDescription())
+                .createdBy(books.getCreatedBy())
                 .createdOn(books.getCreatedOn())
                 .updatedOn(books.getUpdatedOn())
                 .stories(books.getStories().stream().map(story -> mapToStoryDto(story)).collect(Collectors.toList()))

@@ -53,8 +53,9 @@
             <a th:text="${story.title} "class="h3 fw-bolder text-decoration-none link-da rk stretched-link" href="#!">Bookstore</a>
           </div>
           <a th:href="@{/stories/{storyId}(storyId=${story.id})}" class="btn btn-primary">View</a>
+          <div th:if="${user.id} == ${book.createdBy.id}">
           <a th:href="@{/stories/{storyId}(storyId=${story.id})}"class="btn btn-primary">Edit</a>
-
+          </div>
         </div>
       </div>
     </div>

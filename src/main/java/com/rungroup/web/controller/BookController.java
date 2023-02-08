@@ -88,7 +88,7 @@ public class BookController {
 
         Book.setId(bookId);
         bookService.updateBook(Book);
-        return "redirect:/books" + bookId;
+        return "redirect:/books";
     }
 
 

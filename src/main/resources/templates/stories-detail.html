@@ -63,13 +63,13 @@
             <div class="small text-muted" th:text="${story.createdOn}"></div>
             <h2 class="card-title">About the story</h2>
             <p class="card-text" th:text="${story.description}" ></p>
-            <a class="btn btn-primary" >Delete</a>
-            <a class="btn btn-primary">Edit</a>
+            <a class="btn btn-primary" th:href="@{/stories/{storyId}/delete(storyId=${story.id})}">Delete</a>
+
           </div>
         </div>
 
         <!-- Pagination-->
-      </div>
+
       <!-- Side widgets-->
       <div class="col-lg-4">
         <!-- Search widget-->

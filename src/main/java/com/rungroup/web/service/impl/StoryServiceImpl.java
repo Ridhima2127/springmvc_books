@@ -47,4 +47,18 @@ public class StoryServiceImpl implements StoryService {
         return mapToStoryDto(story);
     }
 
+    @Override
+    public void updateStory(StoryDto storyDto) {
+        Story story = mapToStory(storyDto);
+        storyRepository.save(story);
+
+    }
+
+    @Override
+    public void deleteStory(long storyId) {
+        storyRepository.deleteById(storyId);
+    }
+
+
+
 }

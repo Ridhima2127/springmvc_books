@@ -12,4 +12,8 @@ public interface StoryService {
 
 
     StoryDto findByStoryId(Long storyId);
+
+    void updateStory(StoryDto storyDto);
+
+    void deleteStory(long storyId);
 }

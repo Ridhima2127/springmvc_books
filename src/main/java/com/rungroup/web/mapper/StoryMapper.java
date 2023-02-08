@@ -13,6 +13,7 @@ public class StoryMapper {
                 .type(storyDto.getType())
                 .createdOn(storyDto.getCreatedOn())
                 .updatedOn(storyDto.getUpdatedOn())
+                .book(storyDto.getBook())
                 .build();
 
     }
@@ -25,6 +26,7 @@ public class StoryMapper {
                 .type(story.getType())
                 .createdOn(story.getCreatedOn())
                 .updatedOn(story.getUpdatedOn())
+                .book(story.getBook())
                 .build();
 
     }

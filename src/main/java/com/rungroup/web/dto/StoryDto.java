@@ -1,5 +1,6 @@
 package com.rungroup.web.dto;
 
+import com.rungroup.web.models.Book;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,5 +27,7 @@ public class StoryDto {
     private LocalDateTime createdOn;
     @UpdateTimestamp
     private LocalDateTime updatedOn;
+    private Book book;
+
 
 }

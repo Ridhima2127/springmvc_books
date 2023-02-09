@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-@Component
+
 
 public class AuthController {
         private UserService userService;

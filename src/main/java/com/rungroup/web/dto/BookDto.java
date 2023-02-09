@@ -14,10 +14,10 @@ public class BookDto {
     private Long id;
     @NotEmpty(message = "Book title should not be empty")
     private String title;
-    @NotEmpty(message = "Book description should not be empty")
-    private String description;
-    @NotEmpty(message = "Book category should not be empty")
-    private String category;
+    @NotEmpty(message = "Photo link should not be empty")
+    private String photoURL;
+    @NotEmpty(message = "Book content should not be empty")
+    private String content;
 
     private UserEntity createdBy;
     private LocalDateTime createdOn;

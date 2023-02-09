@@ -13,7 +13,6 @@ public interface BookService {
 
     BookDto findBookById(long bookId);
 
-    BookDto findBookById();
 
 
     void updateBook(BookDto book);

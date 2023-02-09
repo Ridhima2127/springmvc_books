@@ -1,41 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Stories create</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container px-5">
-    <a class="navbar-brand" href="index.html">Book Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">Find books</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Find categories</a></li>
-        <li class="nav-item"><a class="nav-link" href="pricing.html">Directory</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-            <li><a class="dropdown-item" href="blog-home.html">Register</a></li>
-            <li><a class="dropdown-item" href="blog-post.html">Logout</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-            <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-            <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
   <section layout:fragment="body" class="py-5">
+    <div class="container">
 <form role="form" method="post" th:action="@{/stories/{bookId}(bookId=${bookId})}" th:object="{story}">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -84,6 +59,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Create</button>
 </form>
+    </div>
   </section>
 </main>
 </body>

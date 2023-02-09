@@ -11,7 +11,7 @@
   <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
       <div class="text-center my-5">
-        <h1 class="fw-bolder" th:text="${books.title}"></h1>
+        <h1 class="fw-bolder" th:text="${book.title}"></h1>
         <p class="lead mb-0">Charlotte, NC</p>
       </div>
     </div>
@@ -23,9 +23,9 @@
       <div class="col-lg-8">
         <!-- Featured blog post-->
         <div class="card mb-4">
-          <a href="#!"><img class="card-img-top" th:src="${books.photoUrl}" alt="..." /></a>
+          <a href="#!"><img class="card-img-top" th:src="${book.photoUrl}" alt="..." /></a>
           <div class="card-body">
-            <div class="small text-muted" th:text="${books.createdOn}"></div>
+            <div class="small text-muted" th:text="${book.createdOn}"></div>
             <h2 class="card-title">About the book</h2>
             <p class="card-text" th:text="${books.content}"></p>
             <div th:if="${user.id} == ${books.createdBy.id}">

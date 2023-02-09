@@ -47,13 +47,13 @@ public class BookController {
     public String bookDetail(@PathVariable("bookId") long bookId, Model model){
         UserEntity user = new UserEntity();
         BookDto bookDto = bookService.findBookById(bookId);
-        model.addAttribute("book", bookDto);
         String username = SecurityUtil.getSessionUser();
         if(username != null){
             user = userService.findByUsername(username);
             model.addAttribute("user",user);
         }
         model.addAttribute("user",user);
+        model.addAttribute("book", bookDto);
         return "books-detail";
     }
 
@@ -87,7 +87,7 @@ public class BookController {
         }
 
         bookService.saveBook(bookDto);
-    return "redirect:/books";
+        return "redirect:/books";
     }
 
 
@@ -99,18 +99,16 @@ public class BookController {
     }
 
     @PostMapping("/books/{bookId}/edit")
-    public String updateBook(@PathVariable("bookId") Long bookId, @Valid @ModelAttribute("book") BookDto Book, BindingResult result){
+    public String updateBook(@PathVariable("bookId") Long bookId, @Valid @ModelAttribute("book") BookDto book, BindingResult result, Model model){
         if(result.hasErrors()){
-            return "books-create";
+            model.addAttribute("book", book);
+            return "books-edit";
         }
 
-        Book.setId(bookId);
-        bookService.updateBook(Book);
+        book.setId(bookId);
+        bookService.updateBook(book);
         return "redirect:/books";
     }
-
-
-
 
 
 }

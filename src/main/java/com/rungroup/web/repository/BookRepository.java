@@ -12,5 +12,4 @@ Optional<Book> findByTitle(String url);
 @Query("SELECT b from Book b WHERE b.title LIKE CONCAT('%', :query, '%')")
 List<Book> searchBooks(String query);
 
-    Book save(Book book);
 }

@@ -13,23 +13,23 @@ public class BookMapper {
         Book bookDto = Book.builder()
                 .id(book.getId())
                 .title(book.getTitle())
-                .createdBy(book.getCreatedBy())
+                .photoURL(book.getPhotoURL())
+                .content(book.getContent())
                 .createdOn(book.getCreatedOn())
                 .updatedOn(book.getUpdatedOn())
                 .build();
         return bookDto;
     }
 
-    public static BookDto mapToBookDto(Book books){
+    public static BookDto mapToBookDto(Book book){
         BookDto bookDto = BookDto.builder()
-                .id(books.getId())
-                .title(books.getTitle())
-                .category(books.getCategory())
-                .description(books.getDescription())
-                .createdBy(books.getCreatedBy())
-                .createdOn(books.getCreatedOn())
-                .updatedOn(books.getUpdatedOn())
-                .stories(books.getStories().stream().map(story -> mapToStoryDto(story)).collect(Collectors.toList()))
+                .id(book.getId())
+                .title(book.getTitle())
+                .photoURL(book.getPhotoURL())
+                .content(book.getContent())
+                .createdBy(book.getCreatedBy())
+                .createdOn(book.getCreatedOn())
+                .updatedOn(book.getUpdatedOn())
                 .build();
         return bookDto;
     }

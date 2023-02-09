@@ -6,6 +6,7 @@ import com.rungroup.web.dto.StoryDto;
 import com.rungroup.web.models.Story;
 import com.rungroup.web.models.UserEntity;
 import com.rungroup.web.security.SecurityUtil;
+import com.rungroup.web.service.BookService;
 import com.rungroup.web.service.StoryService;
 import com.rungroup.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class StoryController {
 
     private StoryService storyService;
     private UserService userService;
+
+    private BookService bookService;
 
     @Autowired
     public StoryController(StoryService storyService, UserService userService) {
@@ -49,15 +52,10 @@ public class StoryController {
 
     @GetMapping("/stories/{storyId}")
     public String viewStory(@PathVariable("storyId")Long storyId, Model model){
-        UserEntity user = new UserEntity();
+
         StoryDto storyDto = storyService.findByStoryId(storyId);
-        String username = SecurityUtil.getSessionUser();
-        if(username != null){
-            user = userService.findByUsername(username);
-            model.addAttribute("user",user);
-        }
-        model.addAttribute("book", storyDto);
-        model.addAttribute("user",user);
+
+        model.addAttribute("book", storyDto.getBook());
         model.addAttribute("story", storyDto);
         return "stories-detail";
     }

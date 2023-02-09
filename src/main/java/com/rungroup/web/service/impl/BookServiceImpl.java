@@ -62,11 +62,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto findBookById() {
-        return null;
-    }
-
-    @Override
     public void updateBook(BookDto bookDto) {
         String username = SecurityUtil.getSessionUser();
         UserEntity user= userRepository.findByUsername(username);

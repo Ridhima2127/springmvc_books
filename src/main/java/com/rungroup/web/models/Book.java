@@ -23,8 +23,8 @@ public class Book {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String description;
-    private String category;
+    private String photoURL;
+    private String content;
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp
